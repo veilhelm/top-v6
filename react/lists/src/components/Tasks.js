@@ -1,6 +1,10 @@
 import React from 'react';
 
-function Tasks({ tasks }) {
+function Tasks({
+  tasks,
+  completeTask,
+  deleteTask
+}) {
   return tasks.map((task) => {
     return (
       <div key={task.id} className={`task-${task.id}`}>
@@ -8,9 +12,10 @@ function Tasks({ tasks }) {
         <p>{task.description}</p>
         <span>{task.done ? 'Completed' : 'In progress'}</span>
         {!task.done ?
-          <button>Complete</button> :
+          <button onClick={completeTask(task.id)}>Complete</button> :
           <span>Congrats</span>
         }
+        <button onClick={deleteTask(task.id)}>Delete task</button>
       </div>
     );
   });

@@ -5,7 +5,6 @@ class Form extends Component {
     super(props);
 
     this.state = {
-      title: '',
       description: '',
       done: false,
     }
@@ -36,7 +35,7 @@ class Form extends Component {
 
     this.props.createTask(this.state);
 
-    this.setState({ title: '', description: '', done: false });
+    this.setState({ description: '', done: false });
   }
 
   render() {
@@ -48,8 +47,8 @@ class Form extends Component {
             id="title"
             name="title"
             type="text"
-            onChange={this.handleChange}
-            value={this.state.title}
+            onChange={this.props.changeTitle}
+            value={this.props.title}
           />
         </fieldset>
         <fieldset>

@@ -20,14 +20,48 @@ class App extends Component {
     super();
 
     this.state = {
+      // ejemplo: como modificar el estado desde un componente hijo
+      title: '',
       tasks: [],
     }
+  }
+
+  completeTask = (id) => {
+    return (event) => {
+      const tasks = this.state.tasks.map((task) => {
+        if(task.id === id) {
+          return {
+            ...task,
+            done: true,
+          }
+        }
+
+        return task;
+      });
+
+      this.setState({ tasks })
+    }
+  }
+
+  deleteTask = (id) => {
+    return () => {
+      const tasks = this.state.tasks.filter((task) => {
+        return task.id !== id;
+      });
+
+      this.setState({ tasks });
+    }
+  }
+
+  changeTitle = (event) => {
+    this.setState({ title: event.target.value });
   }
 
   createTask = (task) => {
     const newTask = {
       id: uuid(),
-      ...task
+      title: this.state.title,
+      ...task,
     };
 
     this.setState({
@@ -38,8 +72,17 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Form createTask={this.createTask} />
-        <Tasks tasks={this.state.tasks} page={2} />
+        <Form
+          createTask={this.createTask}
+          title={this.state.title}
+          changeTitle={this.changeTitle}
+        />
+        <Tasks
+          tasks={this.state.tasks}
+          completeTask={this.completeTask}
+          deleteTask={this.deleteTask}
+          page={2}
+        />
       </div>
     );
   }
