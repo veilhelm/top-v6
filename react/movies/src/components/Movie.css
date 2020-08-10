@@ -1,0 +1,9 @@
+.Movie {
+  width: 500px;
+  border: 1px solid #333;
+  border-radius: 5px;
+}
+
+.hidden {
+  display: none;
+}

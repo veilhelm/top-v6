@@ -20,6 +20,16 @@ class Popular extends React.Component {
       .finally(() => this.setState({ loading: false }));
   }
 
+  // handleSubmit = (event) => {
+  //   event.preventDefault();
+
+  //   axios({
+  //     method: 'GET',
+  //     url: `https://api.themoviedb.org/3/search/company?api_key=71bb6f7fa8a4064847f8b8cd68582164&page=1&query=${this.state.search}`
+  //   })
+  //     .then(({ data }) => this.setState({ movie: data.results }))
+  // }
+
   render() {
     const { popular, loading, error } = this.state;
 
@@ -27,6 +37,9 @@ class Popular extends React.Component {
     if(error) return <p>Ups! Something went wrong</p>;
     return (
      <div className="popular">
+      {/* <form onSubmit={this.handleSubmit}>
+        <input type="search" />
+      </form> */}
       <h1>Popular</h1>
       <Movies movies={popular} />
      </div>
