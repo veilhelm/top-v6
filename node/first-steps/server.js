@@ -10,7 +10,23 @@ const app = express();
 
 app.use(express.json());
 
-const tasks = [];
+let tasks = [];
+
+// CRUD
+
+// RESTful APIs
+// Create
+// POST / - /tasks/, /users/, /posts/
+
+// READ
+// GET / - /tasks/, /users/, /posts/
+// GET /:id - /tasks/:taskId
+
+// UPDATE
+// PUT /:id - /tasks/:id
+
+// DELETE
+// DELETE /:id - /tasks/:id
 
 // endpoint
 app.get('/', (req, res) => {
@@ -37,6 +53,30 @@ app.get('/:id', (req, res) => {
 
   res.status(200).json(task);
 });
+
+app.put('/:id', (req, res) => {
+  const { id } = req.params;
+
+  tasks = tasks.map((task) => {
+    if(task.id === id) {
+      return {
+        ...task,
+        ...req.body,
+      };
+    }
+
+    return task;
+  });
+
+  res.status(200).json('Ok')
+});
+
+app.delete('/:id', (req, res) => {
+  const { id } = req.params;
+  tasks = tasks.filter((task) => task.id !== id);
+
+  res.status(200).json('ok')
+})
 
 // app.get('/:id', (request, response) => {
 //   console.log(request.params);
