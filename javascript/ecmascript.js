@@ -109,3 +109,36 @@ console.log(juan.name)
 // const person = (name, age) => {
 //   return {}
 // }
+
+const promise = new Promise((resolve, reject) => {
+  resolve('hola mundo');
+});
+
+
+
+// async / await
+async function resolvePromise() {
+  // promise
+  //   .then(msj => console.log(msj))
+  //   .catch(err => console.log(err));
+
+  try {
+    const msj = await promise;
+  } catch(err) {
+    console.log(err);
+  } finally() {
+    // ....
+  }
+
+  // return msj;
+}
+
+// const result = await axios({
+//   url:
+//   method: ...
+// })
+
+// const createTask = async () => {
+
+// }
+
