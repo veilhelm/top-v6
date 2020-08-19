@@ -5,6 +5,7 @@ import {
   Route,
   Link,
   withRouter,
+  useHistory,
 } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
@@ -48,23 +49,48 @@ class Profile extends React.Component {
   }
 }
 
-class PRoute extends React.Component {
-  componentDidMount() {
+function PrivateRoute(props) {
+  const history = useHistory();
+
+  useEffect(() => {
     const token = localStorage.getItem('token');
 
     if(!token) {
-      this.props.history.push('/login');
+      history.push('/login')
     }
-  }
+  }, []);
 
-  render() {
-    return (
-      <Route {...this.props} />
-    )
-  }
+  return (
+    <Route {...props} />
+  );
 }
 
-const PrivateRoute = withRouter(PRoute);
+// class PRoute extends React.Component {
+//   componentDidMount() {
+//     const token = localStorage.getItem('token');
+
+//     if(!token) {
+//       this.props.history.push('/login');
+//     }
+//   }
+
+//   render() {
+//     return (
+//       <Route {...this.props} />
+//     )
+//   }
+// }
+
+// const PrivateRoute = withRouter(PRoute);
+
+// HOF - HOC
+// function withRouter(Component) {
+//   // logica
+
+//   return (
+//     <Component history={} location={} match={}
+//   )
+// }
 
 class Login extends React.Component {
   state = {
