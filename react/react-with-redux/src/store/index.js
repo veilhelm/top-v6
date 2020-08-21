@@ -1,33 +1,7 @@
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
+import { countReducer } from './countReducer';
+import { textReducer } from './textReducer';
 
-const INCREASE_COUNT = 'INCREASE_COUNT';
-const DECREASE_COUNT = 'DECREASE_COUNT';
+const rootReducer = combineReducers({ countReducer, textReducer });
 
-export function increaseCount(increaseBy) {
-  return {
-    type: INCREASE_COUNT,
-    payload: increaseBy
-  }
-}
-
-function reducer(state, action) {
-  switch(action.type) {
-    case INCREASE_COUNT:
-      console.log('increasing count....')
-      return {
-        count: state.count + action.payload,
-      };
-    case DECREASE_COUNT:
-      return {
-        count: state.count - 1,
-      };
-    default:
-      return state;
-  }
-}
-
-const initialState = {
-  count: 0,
-};
-
-export const store = createStore(reducer, initialState);
+export const store = createStore(rootReducer);

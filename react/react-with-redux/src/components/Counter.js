@@ -10,7 +10,7 @@ function Counter(props) {
 
 function mapStateToProps(state) {
   return {
-    oneProp: state.count,
+    oneProp: state.countReducer.count,
   };
 }
 

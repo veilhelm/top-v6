@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { increaseCount } from '../store';
+import { increaseCount } from '../store/countReducer';
 
 function Button({ oneFunction }) {
   return (
