@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 
@@ -6,6 +6,14 @@ function App() {
   const [name, setName] = useState('');
   const [tasks, setTasks] = useState([]);
   
+  useEffect(() => {
+    axios({
+      method: 'GET',
+      baseURL: process.env.REACT_APP_SERVER_URL,
+      url: '/greet',
+    })
+      .then(({ data }) => console.log(data));
+  })
   async function handleSubmit(e) {
     e.preventDefault();
 
