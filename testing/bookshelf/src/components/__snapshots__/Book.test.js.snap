@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Book should match snapshot 1`] = `
+<div>
+  <div
+    class="book"
+    data-testid="book"
+  >
+    <h2
+      class="book-title"
+    >
+      a title
+    </h2>
+    <span>
+      votes: 
+      3
+    </span>
+    <p>
+      a very long description lalalalalala
+    </p>
+  </div>
+</div>
+`;
