@@ -15,4 +15,8 @@ app.use(morgan('dev'));
 app.use('/users', userRouter);
 app.use('/tasks', taskRouter);
 
+app.get('/', (req,res) => {
+  res.status(200).send('Hello world')
+})
+
 module.exports = app;

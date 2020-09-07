@@ -15,7 +15,7 @@ module.exports = {
 
       res.status(200).json({ token });
     } catch (error) {
-      res.status(400).json({ message: error.message });
+      res.status(400).json(error);
     }
   },
   async signin(req, res) {
