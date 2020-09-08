@@ -12,7 +12,7 @@ module.exports = {
 
       const token = authorization.replace('Bearer ', '');
 
-      if(!token) {
+      if(token === '') {
         throw Error('Your session has expired');
       }
 
